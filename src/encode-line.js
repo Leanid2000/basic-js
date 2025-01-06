@@ -10,9 +10,18 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For aabbbc should return 2a3bc
  *
  */
-function encodeLine(/* str */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function encodeLine(str) {
+  let a  = str.split('').map((elem, n, mass) => mass[n]===mass[n+1]? elem=1:elem)
+  let summ = 1
+  return a.map(elem => {
+    if(typeof elem === 'number'){
+        summ += 1
+        return summ
+    }else{
+       summ=1
+        return elem
+    }
+    }).filter((elem, n, mass)=> typeof mass[n]=== 'number' && typeof mass[n+1]=== 'number' ? false : true).join('') 
 }
 
 module.exports = {
